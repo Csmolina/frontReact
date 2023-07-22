@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 export function Form(
-    {setUser}
+    {setUser, setImage}
 ) {
   const [nombre, setNombre] = useState("");
   const [imagen, setImagen] = useState("");
@@ -9,11 +9,15 @@ export function Form(
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre === "" || imagen === "") {
+    if (nombre == "" || imagen == "") {
       setError(true);
     }
-    setError(false);
-    setUser([nombre]);
+    else{
+        setError(false);
+        setUser([nombre]);
+        setImage([imagen]);
+    }
+   
   };
   return (
     <Container>
@@ -39,7 +43,7 @@ export function Form(
               Todos los campos son obligatorios.
             </Error>
           )}
-          <Btn>Ingresar al chat</Btn>
+          <Btn onClick={console.log(setUser.length)} >Ingresar al chat</Btn>
         </Forms>
       </SubContainer>
     </Container>
@@ -50,7 +54,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #171717;
+  background: rgb(187,128,62);
+background: linear-gradient(34deg, rgba(187,128,62,1) 0%, rgba(39,60,159,1) 100%);
   height: 100vh;
   width: 100%;
 `;
@@ -59,7 +64,7 @@ const Title = styled.h1`
   font-weight: 700;
 `;
 const SubContainer = styled.div`
-  background-color: #567bd985;
+  background-color: #567bd944;
   padding: 10rem 5rem 10rem 5rem;
   border-radius: 10px;
   border: none !important;
@@ -74,6 +79,7 @@ const Input = styled.input`
   border-radius: 10px;
   padding: 0.5rem;
   font-size: 1rem;
+  background-color: #ffffff64;
 `;
 const Forms = styled.form`
   display: flex;
@@ -85,9 +91,9 @@ const Btn = styled.button`
   padding: 1rem;
   border-radius: 15px;
   border: 0.1rem;
-  background-color: #dfcf67;
+  background-color: #cdb88c;
   &:hover {
-    background-color: #b3a75d;
+    background-color: #9e8f6d;
     transform: scale(1.1);
     transition: all 0.3s ease;
   }
