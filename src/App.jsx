@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Form } from "./components/Form";
 import { Home } from "./pages/Home";
+import { ComentarioProvider,ComentarioContext } from "./components/ComentariosContext";
 function App() {
-  const [user, setUser] = useState([]);
-  const [image, setImage] = useState([]);
+  const {nombre} = useContext(ComentarioContext);
   return (
-    <div className="App">
-      {!user.length > 0 ? <Form setUser={setUser} setImage={setImage}  /> : <Home user={user}  imagen={image}/>}
-    </div>
+   
+      <div className="App">
+        {!nombre.length > 0 ? (
+          <Form/>
+        ) : (
+          <Home  />
+        )}
+      </div>
+  
   );
 }
 

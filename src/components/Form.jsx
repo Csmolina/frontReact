@@ -1,12 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { ComentarioContext } from "./ComentariosContext";
+import { useContext } from "react";
 export function Form(
-    {setUser, setImage}
+    
 ) {
-  const [nombre, setNombre] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [nombre, setNombre] = useState('');
+  const [imagen, setImagen] = useState('');
   const [error, setError] = useState(false);
-
+  const {GuardarUsuario} = useContext(ComentarioContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (nombre == "" || imagen == "") {
@@ -14,8 +16,9 @@ export function Form(
     }
     else{
         setError(false);
-        setUser([nombre]);
-        setImage([imagen]);
+        GuardarUsuario(nombre,imagen);
+       
+ 
     }
    
   };
@@ -43,7 +46,7 @@ export function Form(
               Todos los campos son obligatorios.
             </Error>
           )}
-          <Btn onClick={console.log(setUser.length)} >Ingresar al chat</Btn>
+          <Btn >Ingresar al chat</Btn>
         </Forms>
       </SubContainer>
     </Container>
