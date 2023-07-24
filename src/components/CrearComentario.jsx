@@ -94,6 +94,11 @@ const Input = styled.input`
   border-radius: 10px;
   border: none;
   background-color: #ffffffcf;
+  @media (max-width:560px) {
+  margin: 0;
+  padding: 0;
+  
+}
 `;
 const Btn = styled.button`
   font-size: 1.3rem;

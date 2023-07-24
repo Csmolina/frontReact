@@ -19,7 +19,7 @@ export function Form() {
   return (
     <Container>
       <SubContainer>
-        <Title>Chat prueba </Title>
+        <Title>Chat prueba Aval Buró </Title>
         <Forms onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -92,9 +92,9 @@ const Btn = styled.button`
   padding: 1rem;
   border-radius: 15px;
   border: 0.1rem;
-  background-color: #cdb88c;
+  background-color: #cde8ad;
   &:hover {
-    background-color: #9e8f6d;
+    background-color: #bad19d;
     transform: scale(1.1);
     transition: all 0.3s ease;
   }

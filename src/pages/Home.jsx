@@ -27,11 +27,15 @@ const Container = styled.div`
     rgba(39, 60, 159, 1) 100%
   );
   min-height: 100vh;
+ 
 `;
 const SubContainer = styled.div`
   margin: 0 10% 0 10%;
   padding: 10rem 0 10rem 0;
   height: 100%;
+  @media (max-width:560px) {
+  margin: 0 1% 0 1%;
+}
 `;
 const NavBar = styled.div`
   display: flex;
@@ -47,4 +51,7 @@ const NavBar = styled.div`
     height: 10vh;
     border-radius: 50%;
   }
+  @media (max-width:560px) {
+ font-size: 0.75rem;
+}
 `;
