@@ -92,10 +92,10 @@ color: #ffffff;
   font-size: 1.4rem;
   padding: 1rem;
   border-radius: 15px;
-  border: 0.1rem;
-  background-color: #493561;
+  border: 0rem;
+  background-color: #ffffff6c;
   &:hover {
-    background-color: #3a2c4b;
+    background-color: #a7a7a76c;
     transform: scale(1.1);
     transition: all 0.3s ease;
   }
