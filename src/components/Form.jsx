@@ -88,13 +88,14 @@ const Forms = styled.form`
   gap: 2rem;
 `;
 const Btn = styled.button`
+color: #ffffff;
   font-size: 1.4rem;
   padding: 1rem;
   border-radius: 15px;
   border: 0.1rem;
-  background-color: #cde8ad;
+  background-color: #493561;
   &:hover {
-    background-color: #bad19d;
+    background-color: #3a2c4b;
     transform: scale(1.1);
     transition: all 0.3s ease;
   }
