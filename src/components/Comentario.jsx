@@ -5,45 +5,48 @@ import { CrearComentario } from "./CrearComentario";
 import { ComentarioContext } from "./ComentariosContext";
 
 import axios from "axios";
-export function Comentario({
-  id,
-  name,
-  coment,
-  url,
-  points,
-  time,
-  anwsers,
-}) {
-  const {CargarComentarios} = useContext(ComentarioContext);
+export function Comentario({ id, name, coment, url, points, time, anwsers }) {
+  const { CargarComentarios } = useContext(ComentarioContext);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
-  const [puntaje,setPuntaje]=useState(0);
-  const handleSubirPunto= ()=>{
-    setPuntaje(puntaje+1);
-    axios.put('http://127.0.0.1:8080/comentario?id='+id+"&punt="+puntaje)
-    .then((response) => {
-      console.log('Respuesta del servidor:', response.data);
-      CargarComentarios();
-      // Aquí puedes manejar la respuesta del servidor como desees
-    })
-    .catch((error) => {
-      console.error('Error al realizar la solicitud:', error);
-      // Aquí puedes manejar el error como desees
-    });
-  }
-  const handleBajarPunto= ()=>{
-    setPuntaje(puntaje-1);
-    axios.put('http://127.0.0.1:8080/comentario?id='+id+"&punt="+puntaje)
-    .then((response) => {
-      console.log('Respuesta del servidor:', response.data);
-      CargarComentarios();
-      // Aquí puedes manejar la respuesta del servidor como desees
-    })
-    .catch((error) => {
-      console.error('Error al realizar la solicitud:', error);
-      // Aquí puedes manejar el error como desees
-    });
-
-  }
+  const [puntaje, setPuntaje] = useState(0);
+  const handleSubirPunto = () => {
+    setPuntaje(puntaje + 1);
+    axios
+      .put(
+        "https://back-production-be60.up.railway.app/comentario?id=" +
+          id +
+          "&punt=" +
+          puntaje
+      )
+      .then((response) => {
+        console.log("Respuesta del servidor:", response.data);
+        CargarComentarios();
+        // Aquí puedes manejar la respuesta del servidor como desees
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud:", error);
+        // Aquí puedes manejar el error como desees
+      });
+  };
+  const handleBajarPunto = () => {
+    setPuntaje(puntaje - 1);
+    axios
+      .put(
+        "https://back-production-be60.up.railway.app/comentario?id=" +
+          id +
+          "&punt=" +
+          puntaje
+      )
+      .then((response) => {
+        console.log("Respuesta del servidor:", response.data);
+        CargarComentarios();
+        // Aquí puedes manejar la respuesta del servidor como desees
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud:", error);
+        // Aquí puedes manejar el error como desees
+      });
+  };
   const handleMostrarFormulario = () => {
     setMostrarFormulario(!mostrarFormulario);
   };
@@ -101,31 +104,27 @@ export function Comentario({
         </SubContainer>
         <Hora>{moment(time).fromNow()}</Hora>
       </Container>
-     
-    
-        {mostrarFormulario && (
-          <CrearComentario  idcom={id} hide={handleMostrarFormulario}/>
-        )}
-    
+      {mostrarFormulario && (
+        <CrearComentario idcom={id} hide={handleMostrarFormulario} />
+      )}
     </GrandContainer>
   );
 }
 
 const GrandContainer = styled.div`
-
-display: flex;
-flex-direction: column;
-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 const Container = styled.div`
-&::before{
-  transform: scaleY(-10vh);
-transition: all 0.4s ease;
-}
-&::after{
-  transform: scaleY(0);
-  transition: all 0.4s ease;
-}
+  &::before {
+    transform: scaleY(-10vh);
+    transition: all 0.4s ease;
+  }
+  &::after {
+    transform: scaleY(0);
+    transition: all 0.4s ease;
+  }
   display: grid;
   color: white;
   grid-template-columns: auto 70% auto;

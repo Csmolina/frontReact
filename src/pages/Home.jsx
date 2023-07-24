@@ -6,20 +6,17 @@ import { CrearComentario } from "../components/CrearComentario";
 import { ComentarioContext } from "../components/ComentariosContext";
 import moment from "moment";
 export function Home() {
-  const {nombre,imagen} = useContext(ComentarioContext);
+  const { nombre, imagen } = useContext(ComentarioContext);
   return (
-  
-      <Container>
-        <NavBar>
-          {console.log(imagen)}
-          <img src={imagen}></img> <h1>Te damos la bienvenida {nombre}</h1>
-        </NavBar>
-        <SubContainer>
-          <CrearComentario  idcom={-1} />
-          <LoadData/>
-        </SubContainer>
-      </Container>
-  
+    <Container>
+      <NavBar>
+        <img src={imagen}></img> <h1>Te damos la bienvenida {nombre}</h1>
+      </NavBar>
+      <SubContainer>
+        <CrearComentario idcom={-1} />
+        <LoadData />
+      </SubContainer>
+    </Container>
   );
 }
 const Container = styled.div`

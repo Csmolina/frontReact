@@ -2,25 +2,19 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ComentarioContext } from "./ComentariosContext";
 import { useContext } from "react";
-export function Form(
-    
-) {
-  const [nombre, setNombre] = useState('');
-  const [imagen, setImagen] = useState('');
+export function Form() {
+  const [nombre, setNombre] = useState("");
+  const [imagen, setImagen] = useState("");
   const [error, setError] = useState(false);
-  const {GuardarUsuario} = useContext(ComentarioContext);
+  const { GuardarUsuario } = useContext(ComentarioContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (nombre == "" || imagen == "") {
       setError(true);
+    } else {
+      setError(false);
+      GuardarUsuario(nombre, imagen);
     }
-    else{
-        setError(false);
-        GuardarUsuario(nombre,imagen);
-       
- 
-    }
-   
   };
   return (
     <Container>
@@ -46,7 +40,7 @@ export function Form(
               Todos los campos son obligatorios.
             </Error>
           )}
-          <Btn >Ingresar al chat</Btn>
+          <Btn>Ingresar al chat</Btn>
         </Forms>
       </SubContainer>
     </Container>
@@ -57,8 +51,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(187,128,62);
-background: linear-gradient(34deg, rgba(187,128,62,1) 0%, rgba(39,60,159,1) 100%);
+  background: rgb(187, 128, 62);
+  background: linear-gradient(
+    34deg,
+    rgba(187, 128, 62, 1) 0%,
+    rgba(39, 60, 159, 1) 100%
+  );
   height: 100vh;
   width: 100%;
 `;
